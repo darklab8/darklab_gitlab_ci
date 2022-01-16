@@ -10,6 +10,7 @@ deploying_container:
   image: ${docker_image}
   stage: deploy1
   script:
+    - /usr/local/bin/dockerd-entrypoint.sh & sleep 5;
     - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $gitlab_api_key
     - docker build -t $CONTAINER_NAME .
     - docker push $CONTAINER_NAME
