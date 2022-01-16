@@ -1,0 +1,15 @@
+variables:
+  docker_image: docker:19.03.12
+  CI_REGISTRY: registry.gitlab.com
+  CONTAINER_NAME: $CI_REGISTRY_IMAGE/pipeliner:kubectl-v1.0.0
+
+stages:
+  - deploy1
+
+deploying_container:
+  image: ${docker_image}
+  stage: deploy1
+  script:
+    - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $gitlab_api_key
+    - docker build -t $CONTAINER_NAME .
+    - docker push $CONTAINER_NAME
