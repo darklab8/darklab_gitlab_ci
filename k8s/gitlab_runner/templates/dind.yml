@@ -24,6 +24,9 @@ spec:
             - containerPort: 2376
           command: [ "sh", "-c", "--" ]
           args: [ "/usr/local/bin/dockerd-entrypoint.sh" ]
+          env:
+            - name: DOCKER_TLS_CERTDIR
+              value: ""
           securityContext:
             privileged: true
 ---
