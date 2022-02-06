@@ -14,7 +14,8 @@ deploying_container:
   script:
       - echo "123"
       - docker ps
+      - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $gitlab_api_key
+      - docker build --tag test .
     # - /usr/local/bin/dockerd-entrypoint.sh & sleep 20;
-    # - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $gitlab_api_key
     # - docker build -t $CONTAINER_NAME .
     # - docker push $CONTAINER_NAME
