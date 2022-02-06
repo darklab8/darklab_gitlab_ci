@@ -1,7 +1,7 @@
 variables:
   CI_REGISTRY: registry.gitlab.com
-  PIPELINE_RUNNER: $CI_REGISTRY_IMAGE/darklab-pipeliner:kubectl-v1.0.1 # registry.gitlab.com/darklab2/darklab_pipeliner/darklab-pipeliner:kubectl-v1.0.1
-  PIPELINE_BUILDING: $CI_REGISTRY_IMAGE/darklab-pipeliner:kubectl-v1.0.2
+  PIPELINE_RUNNER: $CI_REGISTRY_IMAGE/darklab-pipeliner:kubectl-v1.0.2 # registry.gitlab.com/darklab2/darklab_pipeliner/darklab-pipeliner:kubectl-v1.0.1
+  PIPELINE_BUILDING: $CI_REGISTRY_IMAGE/darklab-pipeliner:kubectl-v1.0.3
 
 stages:
   - deploy1
