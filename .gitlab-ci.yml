@@ -10,7 +10,7 @@ deploying_container:
   image: ${PIPELINE_RUNNER}
   stage: deploy1
   variables:
-    DOCKER_HOST: tcp://dind-service:2375
+    DOCKER_HOST: tcp://dind-service:2376
   script:
       - echo "123"
       - docker ps
