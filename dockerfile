@@ -13,7 +13,7 @@ RUN kubectl version --client
 RUN wget https://get.helm.sh/helm-v3.7.2-linux-amd64.tar.gz
 RUN tar -xf helm-v3.7.2-linux-amd64.tar.gz
 RUN mv linux-amd64/helm /usr/local/bin/helm
-RUN rm -R linux-amd64
+# RUN rm -R linux-amd64
 
 ENV PYTHONUNBUFFERED=1
 RUN apk add python3 && ln -sf python3 /usr/bin/python
