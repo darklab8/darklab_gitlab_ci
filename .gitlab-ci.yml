@@ -1,16 +1,19 @@
 variables:
   docker_image: docker:20.10.12-dind
   CI_REGISTRY: registry.gitlab.com
-  CONTAINER_NAME: $CI_REGISTRY_IMAGE/pipeliner:kubectl-v1.0.0
+  PIPELINE_RUNNER: $CI_REGISTRY_IMAGE/pipeliner:kubectl-v1.0.0
+  DOCKER_HOST: tcp://docker01.mycompany.com:2375
 
 stages:
   - deploy1
 
 deploying_container:
-  image: ${docker_image}
+  image: ${PIPELINE_RUNNER}
   stage: deploy1
   script:
-    - /usr/local/bin/dockerd-entrypoint.sh & sleep 5;
-    - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $gitlab_api_key
-    - docker build -t $CONTAINER_NAME .
-    - docker push $CONTAINER_NAME
+      - echo "123"
+      - docker ps
+    # - /usr/local/bin/dockerd-entrypoint.sh & sleep 20;
+    # - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $gitlab_api_key
+    # - docker build -t $CONTAINER_NAME .
+    # - docker push $CONTAINER_NAME

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dind-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dind-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: dind-app
+    spec:
+      containers:
+        - name: dind-pod
+          image: docker:20.10.12-dind
+          ports:
+            - containerPort: 2376
+          command: [ "sh", "-c", "--" ]
+          args: [ "/usr/local/bin/dockerd-entrypoint.sh" ]
+          securityContext:
+            privileged: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dind-service
+spec:
+  ports:
+    - port: 2376
+      targetPort: 2376
+  selector:
+    app: dind-app
