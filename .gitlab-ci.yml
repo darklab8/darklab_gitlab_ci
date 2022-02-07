@@ -16,5 +16,3 @@ deploying_container:
       - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $gitlab_api_key
       - docker build --tag $PIPELINE_BUILDING .
       - docker push $PIPELINE_BUILDING
-  rules:
-      - when: manual
