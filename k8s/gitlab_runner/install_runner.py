@@ -28,4 +28,4 @@ registrational_token_base64 = str(base64.b64encode((args.gitlab_runner_registry_
 print(registrational_token_base64)
 # kubectl config set-context --current --namespace=
 shell(f'helm upgrade --install --create-namespace --namespace gitlab-runner gitlab-secret . --set super_secret_token="{registrational_token_base64}"')
-shell(f"helm upgrade --install --create-namespace --namespace gitlab-runner -f values.yaml gitlab-runner gitlab/gitlab-runner")
+shell(f"helm upgrade --install --create-namespace --namespace gitlab-runner -f gitlab.yaml gitlab-runner gitlab/gitlab-runner")
