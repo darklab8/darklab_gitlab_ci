@@ -1,4 +1,6 @@
 # Just a notice that here you can configure additional parameters for the gitlab_runner chart
 gitlabUrl: "https://gitlab.com"
+
+imagePullPolicy: Always
 # runners:
 #   privileged: true
